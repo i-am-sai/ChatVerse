@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const botName = 'ChatVerse Bot';
 
-mongoose.connect("mongodb+srv://Sai:IvRLsQdetH2BFGNg@chatverse.6p3bgjq.mongodb.net/ChatVerse?retryWrites=true&w=majority ", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb://127.0.0.1:27017/ChatCordDB", { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('Connected to MongoDB successfully!');
     })
