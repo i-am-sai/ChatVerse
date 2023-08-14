@@ -7,6 +7,7 @@ const { get } = require('https');
 const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require('./utils/users');
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 
 // Create the Mongoose schema
 const userSchema = new mongoose.Schema({
@@ -25,9 +26,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-const botName = 'ChatCord Bot';
+const botName = 'ChatVerse Bot';
 
-mongoose.connect("mongodb://127.0.0.1:27017/ChatCordDB", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://Sai:IvRLsQdetH2BFGNg@chatverse.6p3bgjq.mongodb.net/ChatVerse?retryWrites=true&w=majority ", { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('Connected to MongoDB successfully!');
     })
@@ -44,7 +45,7 @@ io.on('connection', socket => {
         socket.join(user.room);
 
         // Welcome current user
-        socket.emit('message', formatMessage(botName, 'Welcome to ChatCord!'));
+        socket.emit('message', formatMessage(botName, 'Welcome to ChatVerse!'));
 
         // Brodcast when a user connects
         socket.broadcast
